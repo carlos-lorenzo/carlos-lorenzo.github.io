@@ -1,11 +1,11 @@
 @font-face {
     font-family: MonoLisa;
-    src: url("/Fonts/MonoLisa-Regular.ttf");
+    src: url("/MonoLisa-Regular.ttf");
 }
 
 @font-face {
     font-family: MonoLisa;
-    src: url("/Fonts/MonoLisa-Bold.ttf");
+    src: url("/MonoLisa-Bold.ttf");
     font-weight: bold;
 }
 
