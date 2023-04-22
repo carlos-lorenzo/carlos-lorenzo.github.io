@@ -1,23 +1,37 @@
-function drawConnection(width, angle, x, y, left){
+// targeting the svg itself
+const svg = document.querySelector("svg");
 
-    const neuralNetwork = document.getElementsByClassName("neural-network")[0];
+// variable for the namespace 
+const svgns = "http://www.w3.org/2000/svg";
 
-    const newConnection = document.createElement("div");
 
-    newConnection.classList.add("connection");
+function addLine(start_element, end_element){
 
-    if (left){
-        newConnection.style.cssText = `width: ${width}%; transform: rotate(${angle}deg); transform-origin: 0% 0%; left: ${x}px; top: ${y}px;`;
-    }
+    const startPos = getPositionAtCenter(start_element);
+    const endPos = getPositionAtCenter(end_element); 
 
-    else{
-        newConnection.style.cssText = `width: ${width}%; transform: rotate(${angle}deg); transform-origin: 100% 100%; left: ${x}px; top: ${y}px;`;       
-    }
-    
+    let newLine = document.createElementNS(svgns, "line");
+    newLine.setAttribute("class", "connection");
+    newLine.setAttribute("x1", startPos.x);
+    newLine.setAttribute("y1", startPos.y);
+    newLine.setAttribute("x2", endPos.x);
+    newLine.setAttribute("y2", endPos.y);
+    newLine.setAttribute("stroke", "white");
+    newLine.setAttribute("stroke-width", "5");
 
-    neuralNetwork.appendChild(newConnection);
+    svg.appendChild(newLine);
 }
 
+function deleteConnections(){
+
+  // Delete every element of class "connection"
+  const connections = document.getElementsByClassName("connection");
+  const numConnections = connections.length;
+
+  for (let i = 0; i < numConnections; i++){
+      connections[0].remove();
+  }
+}
 
 function getPositionAtCenter(element) {
     const {top, left, width, height} = element.getBoundingClientRect();
@@ -26,88 +40,29 @@ function getPositionAtCenter(element) {
       y: top + height / 2
     };
 }
- 
-function getDistanceBetweenElements(a, b) {
-   const aPosition = getPositionAtCenter(a);
-   const bPosition = getPositionAtCenter(b);
- 
-   return Math.hypot(aPosition.x - bPosition.x, aPosition.y - bPosition.y);  
-}
- 
 
-function computeAngle(a, b){
-
-    const a_rect = a.getBoundingClientRect();
-    const b_rect = b.getBoundingClientRect();
-
-    var dy = b_rect.y - a_rect.y;
-    var dx = b_rect.x - a_rect.x;
-    var theta = Math.atan2(dy, dx); // range (-PI, PI]
-    theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
-    //if (theta < 0) theta = 360 + theta; // range [0, 360)
-    return theta;
-}
-
-function widthToPercentage(width){
-    // divide width by screen width * 100
-    return (width / (window.innerWidth)) * 100;
-}
-
-
-function deleteConnections(){
-
-    // Delete every element of class "connection"
-    const connections = document.getElementsByClassName("connection");
-    const numConnections = connections.length;
-
-    for (let i = 0; i < numConnections; i++){
-        connections[0].remove();
-    }
-}
 
 function drawConnections(){
-    
-    
-    deleteConnections();
-
-    const projects = document.getElementsByClassName('project');
-    const numProjects = projects.length;
-
-    // startNode is about me
-    const startNode = document.getElementById('about-me');
-
-    // loop through all projects
-    for (let i = 0; i < numProjects; i++){
-        // get the current node
-        const currentNode = projects[i];
-    
-        const width = widthToPercentage(getDistanceBetweenElements(startNode, currentNode));
-        const theta = computeAngle(startNode, currentNode);
-
-        drawConnection(width, theta, getPositionAtCenter(startNode).x, getPositionAtCenter(startNode).y, true);
-    }
 
 
-    // startNode is about me
-    const endNode = document.getElementById('contact')
+  deleteConnections();
 
-    // loop through all projects
-    for (let i = 0; i < numProjects; i++){
-        // get the current node
-        const currentNode = projects[i];
-    
-        const width = widthToPercentage(getDistanceBetweenElements(endNode, currentNode));
-        const theta = computeAngle(currentNode, endNode);
+  // startNode is about me
+  const startNode = document.getElementById('about-me');
 
-        drawConnection(width, theta, getPositionAtCenter(currentNode).x, getPositionAtCenter(endNode).y, false);
-    }
+  const projects = document.getElementsByClassName('project');
 
-    
+  const endNode = document.getElementById('contact');
 
+
+  for (let i = 0; i < projects.length; i++) {
+    addLine(startNode, projects[i]);
+    addLine(projects[i], endNode );
+
+  }
 }
-
-
 
 window.addEventListener('load', drawConnections);
 
 window.addEventListener('resize', drawConnections);
+

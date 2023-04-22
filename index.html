@@ -7,6 +7,7 @@
     </head>
 
     <body>
+        <svg xmlns="http://www.w3.org/2000/svg" width="100vw" height="100vh"></svg>
         <h1 class="centred">Carlos Lorenzo-Zúñiga</h1>
         <h2 class="centred">Machine Learning Engineer | Tutor</h2>
         
@@ -18,40 +19,46 @@
         </div>
         
 
-        <div class="neural-network">
-            <div class="node" id="about-me" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
-                <h1 class="node-title-hidden">About Me</h1>
-                <p class="node-description-hidden">I'm a spanish, self-taught developer that works mainly in the field of machine learning(neural networks and data science). <br><br>  I work to make intimidating topics such as programming, accessible.</p>
+        
+            <div class="neural-network">
+                <div class="node" id="about-me" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
+                    <h1 class="node-title-hidden">About Me</h1>
+                    <p class="node-description-hidden">I'm a spanish, self-taught developer that works mainly in the field of machine learning(neural networks and data science). <br><br>  I work to make intimidating topics such as programming, accessible.</p>
+                </div>
+    
+                <div class="projects">
+                    <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
+                        <h1 class="node-title-hidden">Cancer Detection</h1>
+                        <p class="node-description-hidden">Convolutional neural network that classifies images and states if it is cancerous or not with +95% accuracy.</p>
+                    </div>
+    
+                    <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
+                        <h1 class="node-title-hidden">Forex library</h1>
+                        <p class="node-description-hidden">Python library containing tools to work with FOREX. It includes candle-data visualizing, backtesting on historical data and live trading.</p>                    
+                        
+                    </div>
+                    <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
+                        <h1 class="node-title-hidden">This website</h1>
+                        <p class="node-description-hidden">I'm currently learning frontend development, this is my first proyect.<br>It therefore can be inmesely improved.</p>                    
+                    </div>
+    
+                    <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
+                        <h1 class="node-title-hidden">BPhO Computational Challenged</h1>
+                        <p class="node-description-hidden">BPHo computational challenge completed to the highest level, gold award.</p>                    
+                    </div>
+    
+                </div>
+                
+                <div class="node" id="contact" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
+                    <h1 class="node-title-hidden">Contact</h1>
+                    <h5 class="node-description-hidden">Github: carlos-lorenzo <br>Mail: clorenzozuniga@gmail.com</h5>                
+                </div>
             </div>
+        
 
-            <div class="projects">
-                <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
-                    <h1 class="node-title-hidden">Cancer Detection</h1>
-                    <p class="node-description-hidden">Convolutional neural network that classifies images and states if it is cancerous or not with +95% accuracy.</p>
-                </div>
+        
 
-                <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
-                    <h1 class="node-title-hidden">Forex library</h1>
-                    <p class="node-description-hidden">Python library containing tools to work with FOREX. It includes candle-data visualizing, backtesting on historical data and live trading.</p>                    
-
-                </div>
-                <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
-                    <h1 class="node-title-hidden">This website</h1>
-                    <p class="node-description-hidden">I'm currently learning frontend development, this is my first proyect.<br>It therefore can be inmesely improved.</p>                    
-                </div>
-
-                <div class="node project" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
-                    <h1 class="node-title-hidden">BPhO Computational Challenged</h1>
-                    <p class="node-description-hidden">BPHo computational challenge completed to the highest level, gold award.</p>                    
-                </div>
-
-            </div>
-            
-            <div class="node" id="contact" onmouseover="animateInfo(this)" onmouseleave="removeAnimation()">
-                <h1 class="node-title-hidden">Contact</h1>
-                <h5 class="node-description-hidden">Github: carlos-lorenzo <br>Mail: clorenzozuniga@gmail.com</h5>                
-            </div>
-        </div>
+        
 
         <script src="/js/drawConnections.js"></script>
         <script src="/js/animateNodeInfo.js"></script>
