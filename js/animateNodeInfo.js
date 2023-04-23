@@ -15,5 +15,8 @@ function animateInfo(node){
 }
 
 function removeAnimation(){
+    document.getElementById("info-banner-title").innerText = "";
+    document.getElementById("info-banner-description").innerText = "";
+
     document.getElementById("info-banner").classList.remove("info-anim");
 }
