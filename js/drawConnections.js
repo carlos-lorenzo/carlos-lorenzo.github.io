@@ -13,9 +13,9 @@ function addLine(start_element, end_element){
     let newLine = document.createElementNS(svgns, "line");
     newLine.setAttribute("class", "connection");
     newLine.setAttribute("x1", startPos.x);
-    newLine.setAttribute("y1", startPos.y);
+    newLine.setAttribute("y1", startPos.y - 30);
     newLine.setAttribute("x2", endPos.x);
-    newLine.setAttribute("y2", endPos.y);
+    newLine.setAttribute("y2", endPos.y - 30);
     newLine.setAttribute("stroke", "white");
     newLine.setAttribute("stroke-width", "5");
 
